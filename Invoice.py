@@ -8,6 +8,14 @@ class Invoice:
         self.items['discount'] = discount
         return self.items
 
+    # New Function
+    def removeProduct(self, product_name, products):
+        if product_name in products:
+            return products.pop(product_name)
+        else:
+            print(product_name, " does not exist!")
+            return None
+
     def totalImpurePrice(self, products):
         total_impure_price = 0
         for k, v in products.items():
@@ -43,4 +51,3 @@ class Invoice:
                 continue
             else:
                 return userInput
-    

@@ -23,3 +23,18 @@ def test_CanCalculateTotalDiscount(invoice, products):
 def test_CalCalculateTotalPurePrice(invoice, products):
     invoice.totalPurePrice(products)
     assert invoice.totalPurePrice(products) == 69.38
+
+# New Test case 1
+def test_AddProduct(invoice, products):
+    products['New Product'] = invoice.addProduct(5, 7, 3)
+    assert products['New Product']['qnt'] == 5
+    assert products['New Product']['unit_price'] == 7
+    assert products['New Product']['discount'] == 3
+
+# New Test case 2
+def test_RemoveProduct(invoice, products):
+    assert invoice.removeProduct('Pen', products) == {'qnt' : 10, 'unit_price' : 3.75, 'discount' : 5}
+    try:
+        products['Pen'] == {}
+    except:
+        assert True
